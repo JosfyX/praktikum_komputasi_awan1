@@ -1,11 +1,12 @@
 pipeline {
     agent any
+    environment {
+        IMAGE_NAME = 'abdieeuh/simple-app'
+        REGISTRY = 'https://index.docker.io/v1/'
+        REGISTRY_CREDENTIALS = 'dockerhub-credentials'
+        DOCKER_HOST = "unix:///var/run/docker.sock"
+    }
     stages {
-        stage('Hello') {
-            steps {
-                echo 'My Jenkins Pipeline'
-            }
-        }
         stage('Checkout') {
             steps {
                 echo 'Melakukan checkout dari SCM...'
@@ -24,11 +25,14 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    echo 'Push image ke Docker Hub...'
+                    // Aktifkan kembali saat kredensial Docker Hub sudah siap
+                    /*
                     docker.withRegistry(REGISTRY, REGISTRY_CREDENTIALS) {
                         docker.image("${IMAGE_NAME}:${env.BUILD_NUMBER}").push()
                         docker.image("${IMAGE_NAME}:${env.BUILD_NUMBER}").push('latest')
                     }
+                    */
+                    echo 'Tahap Push dilewati (testing lokal).'
                 }
             }
         }
