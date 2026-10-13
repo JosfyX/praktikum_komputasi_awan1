@@ -14,12 +14,6 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Build') {
-            steps {
-                echo 'Mulai build aplikasi'
-                sh 'echo "Build selesai ✅"'
-            }
-        }
         stage('Build Docker Image') {
             steps {
                 script {
