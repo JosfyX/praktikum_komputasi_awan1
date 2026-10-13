@@ -6,9 +6,6 @@ pipeline {
                 echo 'My Jenkins Pipeline'
             }
         }
-    }
-}
-    stages {
         stage('Checkout') {
             steps {
                 echo 'Melakukan checkout dari SCM...'
